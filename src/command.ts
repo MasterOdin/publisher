@@ -130,7 +130,7 @@ export class DeleteCommand implements Command {
 
   public execute(): Promise<number> {
     return new Promise((resolve, reject) => {
-      rimraf(this.dir, {glob: false}, (err: Error) => {
+      rimraf(this.dir, {glob: false}, (err): void => {
         if (err) {
           return reject(err);
         }
