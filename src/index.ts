@@ -8,15 +8,10 @@ import program from 'commander';
 import stripJsonComments from 'strip-json-comments';
 
 import { DeleteCommand, NpmCommand, Command } from './command';
+import { loadTsConfig, TsConfigJson } from './loader';
 import { getCommands, init } from './runner';
 import { PackageJson, PublisherConfig } from './types';
-import { modifyPackageJson, parseTsConfig } from './utils';
-
-interface TsConfigJson {
-  compilerOptions?: {
-    outDir?: string;
-  };
-}
+import { modifyPackageJson } from './utils';
 
 async function runCommands(commands: Command[]): Promise<void> {
   for (const command of commands) {
@@ -124,7 +119,7 @@ if (fs.existsSync(resolve(cwd, '.publisherrc'))) {
 
 let tsconfig: TsConfigJson;
 try {
-  tsconfig = parseTsConfig(resolve(cwd, 'tsconfig.json')) as TsConfigJson;
+  tsconfig = loadTsConfig(cwd, 'tsconfig.json');
 }
 catch (exc) {
   console.error('Failed to parse tsconfig.json file');
