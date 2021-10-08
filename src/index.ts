@@ -82,6 +82,7 @@ program.version((JSON.parse(fs.readFileSync(filePath, {encoding: 'utf-8'})) as {
 
 program
   .option('-i, --init', 'Initialize publisher for repository')
+  .option('-p, --project', 'Path to tsconfig.json file to use', 'tsconfig.json')
   .option('--dryrun, --dry-run', 'Do a dry-run of publisher without publishing')
   .option('--no-checks', 'Will not run lint or test steps');
 
@@ -109,7 +110,9 @@ catch (exc) {
   process.exit(1);
 }
 
-let publisherRc: PublisherConfig = {};
+let publisherRc: PublisherConfig = {
+  project: 'tsconfig.json',
+};
 if (fs.existsSync(resolve(cwd, '.publisherrc'))) {
   publisherRc = JSON.parse(stripJsonComments(fs.readFileSync(
     resolve(cwd, '.publisherrc'),
@@ -117,9 +120,17 @@ if (fs.existsSync(resolve(cwd, '.publisherrc'))) {
   ))) as PublisherConfig;
 }
 
+if (program.project !== undefined) {
+  publisherRc.project = program.package as string;
+}
+
+if (program.checks !== undefined) {
+  publisherRc.checks = program.checks as boolean;
+}
+
 let tsconfig: TsConfigJson;
 try {
-  tsconfig = loadTsConfig(cwd, 'tsconfig.json');
+  tsconfig = loadTsConfig(cwd, publisherRc.project || 'tsconfig.json');
 }
 catch (exc) {
   console.error('Failed to parse tsconfig.json file');

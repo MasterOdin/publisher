@@ -14,5 +14,6 @@ export interface PublisherConfig {
   outDir?: string;
   publish?: boolean;
   clean?: boolean;
+  checks?: boolean;
   project?: string;
 }
