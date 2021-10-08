@@ -74,7 +74,7 @@ export class CopyCommand implements Command {
 
   public execute(): Promise<number> {
     if (!fs.existsSync(join(this.dest, dirname(this.file)))) {
-      fs.mkdirSync(join(this.dest, dirname(this.file)), {recursive: true});
+      fs.mkdirSync(join(this.dest, dirname(this.file)), { recursive: true });
     }
     fs.copyFileSync(join(this.src, this.file), join(this.dest, this.file));
     return Promise.resolve(0);
@@ -107,7 +107,7 @@ export class BulkCopyCommand implements Command {
       const promises = [];
       for (const file of this.files) {
         if (!fs.existsSync(join(this.dest, dirname(file)))) {
-          fs.mkdirSync(join(this.dest, dirname(file)), {recursive: true});
+          fs.mkdirSync(join(this.dest, dirname(file)), { recursive: true });
         }
         promises.push(fs.promises.copyFile(join(this.src, file), join(this.dest, file)));
       }
@@ -130,7 +130,7 @@ export class DeleteCommand implements Command {
 
   public execute(): Promise<number> {
     return new Promise((resolve, reject) => {
-      rimraf(this.dir, {glob: false}, (err): void => {
+      rimraf(this.dir, { glob: false }, (err): void => {
         if (err) {
           return reject(err);
         }

@@ -2,5 +2,8 @@
   "extends": [
     "@masterodin/eslint-config-typescript"
   ],
-  "ignorePatterns": ["jest.config.js"]
+  "ignorePatterns": ["jest.config.js"],
+  "rules": {
+    "@typescript-eslint/object-curly-spacing": ["error", "always"]
+  }
 }

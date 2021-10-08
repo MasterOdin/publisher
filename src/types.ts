@@ -1,9 +1,9 @@
 export interface PackageJson {
   name?: string;
-  scripts?: {[key: string]: string};
-  dependencies?: {[key: string]: string};
-  devDependencies?: {[key: string]: string};
-  bin?: {[key: string]: string};
+  scripts?: { [key: string]: string };
+  dependencies?: { [key: string]: string };
+  devDependencies?: { [key: string]: string };
+  bin?: { [key: string]: string };
   main?: string;
   types?: string;
   publisherrc?: PublisherConfig;

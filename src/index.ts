@@ -36,7 +36,7 @@ function runner(cwd: string, packageJson: PackageJson, publisherRc: PublisherCon
     if (tsconfig && tsconfig.compilerOptions && tsconfig.compilerOptions.outDir) {
       console.log(`> Copying and fixing package.json into ${tsconfig.compilerOptions.outDir}`);
       packageJson = modifyPackageJson(packageJson, tsconfig.compilerOptions.outDir);
-      console.log(`${colors.green('DONE')}`);
+      console.log(colors.green('DONE'));
       fs.writeFileSync(resolve(tsconfig.compilerOptions.outDir, 'package.json'), JSON.stringify(packageJson, null, 2));
     }
 
@@ -78,7 +78,7 @@ else {
   filePath = join(__dirname, '..', 'package.json');
 }
 
-program.version((JSON.parse(fs.readFileSync(filePath, {encoding: 'utf-8'})) as {version: string}).version);
+program.version((JSON.parse(fs.readFileSync(filePath, { encoding: 'utf-8' })) as { version: string }).version);
 
 program
   .option('-i, --init', 'Initialize publisher for repository')
@@ -102,7 +102,7 @@ let packageJson: PackageJson;
 try {
   packageJson = JSON.parse(stripJsonComments(fs.readFileSync(
     packagePath,
-    {encoding: 'utf8'},
+    { encoding: 'utf8' },
   ))) as PackageJson;
 }
 catch (exc) {
@@ -116,7 +116,7 @@ let publisherRc: PublisherConfig = {
 if (fs.existsSync(resolve(cwd, '.publisherrc'))) {
   publisherRc = JSON.parse(stripJsonComments(fs.readFileSync(
     resolve(cwd, '.publisherrc'),
-    {encoding: 'utf8'},
+    { encoding: 'utf8' },
   ))) as PublisherConfig;
 }
 

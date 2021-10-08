@@ -40,7 +40,7 @@ describe('getCommands', () => {
         build: 'tsc',
       },
     };
-    expect(getCommands(cwd, cwd, packageJson, {steps: ['lint', 'test', 'tsc']})).toEqual([
+    expect(getCommands(cwd, cwd, packageJson, { steps: ['lint', 'test', 'tsc'] })).toEqual([
       new NpmRunCommand(cwd, 'lint'),
       new NpmRunCommand(cwd, 'test'),
       new ExecCommand(cwd, 'tsc'),
@@ -75,7 +75,7 @@ describe('getCommands', () => {
         steps: ['lint, test'],
       },
     };
-    expect(getCommands(cwd, cwd, packageJson, {steps: ['lint', 'build']})).toEqual([
+    expect(getCommands(cwd, cwd, packageJson, { steps: ['lint', 'build'] })).toEqual([
       new NpmRunCommand(cwd, 'lint'),
       new NpmRunCommand(cwd, 'build'),
     ]);
@@ -156,7 +156,7 @@ describe('init', (): void => {
     init(cwd, packagePath);
     const packageJson = JSON.parse(readFileSync(
       packagePath,
-      {encoding: 'utf8'},
+      { encoding: 'utf8' },
     )) as PackageJson;
     expect(packageJson).toEqual({
       scripts: {
@@ -179,7 +179,7 @@ describe('init', (): void => {
     init(cwd, packagePath);
     const packageJson = JSON.parse(readFileSync(
       packagePath,
-      {encoding: 'utf8'},
+      { encoding: 'utf8' },
     )) as PackageJson;
     expect(packageJson).toEqual({
       scripts: {

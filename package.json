@@ -10,7 +10,6 @@
     "build": "tsc",
     "watch": "tsc -w",
     "lint": "eslint src \"test/**/*.ts\"",
-    "lint:fix": "eslint --fix src \"test/**/*.ts\"",
     "codecov": "codecov",
     "publisher": "npm run build && node ./dist/index.js",
     "publisher-dry": "npm run build && node ./dist/index.js --dry-run"

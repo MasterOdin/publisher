@@ -82,7 +82,7 @@ export function getNonSrcFiles(path: string, outDir?: string): string[] {
   const files: Set<string> = new Set();
   const strippedOutDir = stripLeadingSlash(outDir || '');
   if (fs.existsSync(join(path, '.npmignore'))) {
-    const includeFiles = walk.sync({path: path, ignoreFiles: ['.npmignore']}).filter((entry) => {
+    const includeFiles = walk.sync({ path: path, ignoreFiles: ['.npmignore'] }).filter((entry) => {
       return shouldIncludeFile(entry, strippedOutDir);
     });
     includeFiles.forEach((entry) => files.add(entry));

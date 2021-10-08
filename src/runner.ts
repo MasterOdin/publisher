@@ -73,7 +73,7 @@ export function getCommands(cwd: string, outDir: string, packageJson: PackageJso
 export function init(cwd: string, packagePath: string): void {
   const packageJson = JSON.parse(readFileSync(
     packagePath,
-    {encoding: 'utf8'},
+    { encoding: 'utf8' },
   )) as PackageJson;
   if (!packageJson.scripts) {
     packageJson.scripts = {};
