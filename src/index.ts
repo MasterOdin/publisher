@@ -28,7 +28,7 @@ function runner(cwd: string, packageJson: PackageJson, publisherRc: PublisherCon
   const outDir = publisherRc.outDir || tsconfig.compilerOptions?.outDir || cwd;
 
   const commands = getCommands(cwd, outDir, packageJson, publisherRc, program.checks);
-  if (publisherRc.clean !== false) {
+  if (publisherRc.clean !== false && outDir !== cwd) {
     commands.unshift(new DeleteCommand(outDir));
   }
   runCommands(commands).then((): void => {
