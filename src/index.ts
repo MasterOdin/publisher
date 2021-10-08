@@ -81,7 +81,7 @@ else {
 program.version((JSON.parse(fs.readFileSync(filePath, {encoding: 'utf-8'})) as {version: string}).version);
 
 program
-  .option('--init', 'Initialize publisher for repository')
+  .option('-i, --init', 'Initialize publisher for repository')
   .option('--dryrun, --dry-run', 'Do a dry-run of publisher without publishing')
   .option('--no-checks', 'Will not run lint or test steps');
 
