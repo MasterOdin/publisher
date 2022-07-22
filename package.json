@@ -53,7 +53,7 @@
     "commander": "^6.0.0",
     "ignore-walk": "^4.0.1",
     "rimraf": "^3.0.2",
-    "strip-json-comments": "^3.0.1"
+    "strip-json-comments": "^5.0.0"
   },
   "engines": {
     "node": ">=10"
