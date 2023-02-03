@@ -37,7 +37,7 @@
     "@types/ignore-walk": "^4.0.0",
     "@types/node": "^10.17.15",
     "@types/jest": "^27.0.2",
-    "@types/rimraf": "^3.0.0",
+    "@types/rimraf": "^4.0.5",
     "@types/temp": "^0.9.0",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
